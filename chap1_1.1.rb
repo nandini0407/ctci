@@ -12,5 +12,7 @@ def is_unique?(str)
   true
 end
 
+# O(n)
+
 puts is_unique?('abcd')
 puts is_unique?('accd')

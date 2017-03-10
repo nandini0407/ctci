@@ -21,5 +21,7 @@ def check_permutation(str1, str2)
     count1 == count2
 end
 
+# O(n)
+
 puts check_permutation('abcd', 'dabc')
 puts check_permutation('abcddd', 'dabc')
