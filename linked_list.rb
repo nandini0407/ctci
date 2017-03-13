@@ -30,10 +30,9 @@ class SinglyLinkedList
     nil
   end
 
-  # inserts new node at the beginning(immediatedly after head)
   def insert(val)
-    if @last_node.nil?
-      @last_node.value = value
+    if @last_node.value.nil?
+      @last_node.value = val
     else
       new_node = Node.new(val)
       @last_node.next = new_node
@@ -41,10 +40,6 @@ class SinglyLinkedList
       @last_node = new_node
     end
     @last_node
-    # pushed_node = @head.next
-    # new_node.next = pushed_node
-    # @head.next = new_node
-    # new_node
   end
 
   def delete(val)
@@ -78,10 +73,16 @@ class SinglyLinkedList
 
   def display
     n = head.next
+    display_str = "head -> "
     while n != @tail
-      puts n.value
+      if n.value.nil?
+        display_str += "  -> "
+      else
+        display_str += n.value.to_s + " -> "
+      end
       n = n.next
     end
+    puts display_str + "tail"
   end
 
 end
@@ -147,10 +148,16 @@ class DoublyLinkedList
 
   def display
     n = head.next
+    display_str = "head <-> "
     while n != @tail
-      puts n.value
+      if n.value.nil?
+        display_str += "  <-> "
+      else
+        display_str += n.value.to_s + " <-> "
+      end
       n = n.next
     end
+    puts display_str + "tail"
   end
 
 end
