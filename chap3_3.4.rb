@@ -3,38 +3,34 @@ require_relative 'stack.rb'
 class MyQueue
 
   def initialize
-    @push_stack = []
-    @pop_stack = []
+    @push_stack = Stack.new
+    @pop_stack = Stack.new
   end
 
   def add(item)
-    @pop_stack.each do |el|
-      @push_stack << el
+    @pop_stack.size.times do
+      @push_stack.push(@pop_stack.pop)
     end
-    @push_stack << item
+    @push_stack.push(item)
+    @push_stack.size.times do
+      @pop_stack.push(@push_stack.pop)
+    end
   end
 
   def remove
-    @push_stack.each do |el|
-      @pop_stack << el
-    end
     @pop_stack.pop
   end
 
   def peek
-    if @pop_stack.empty?
-      return @push_stack[0]
-    else
-      return @pop_stack[-1]
-    end
+    @pop_stack.peek
   end
 
   def size
-    @push_stack.empty? ? @pop_stack.length : @push_stack.length
+    @pop_stack.size
   end
 
   def empty?
-    @push_stack.empty? && @pop_stack.empty?
+    @pop_stack.empty?
   end
 
 end
