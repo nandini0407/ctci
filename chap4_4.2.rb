@@ -12,4 +12,4 @@ def make_bst(sorted_arr)
 end
 
 rt = make_bst([1, 2, 3, 4, 5, 6, 7])
-preorder(rt)
+# preorder(rt)
