@@ -9,6 +9,47 @@ class Node
 
 end
 
+def build_binary_tree(arr)
+  root = Node.new(arr[0])
+  bt_arr = [root]
+  i = 1
+  while i < arr.length
+    if (i - 1) / 2 >= 0
+      parent = bt_arr[(i - 1) / 2]
+      new_node = Node.new(arr[i])
+      if parent.left.nil?
+        parent.left = new_node
+        bt_arr << new_node
+      elsif parent.right.nil?
+        parent.right = new_node
+        bt_arr << new_node
+      end
+    end
+    i += 1
+  end
+  root
+end
+
+def build_bst(arr)
+  root = Node.new(arr[0])
+  arr[1..-1].each do |el|
+    insert_into_bst(root, el)
+  end
+  root
+end
+
+def insert_into_bst(node, value)
+  if node.nil?
+    return Node.new(value)
+  end
+  if value <= node.value
+    node.left = insert_into_bst(node.left, value)
+  else
+    node.right = insert_into_bst(node.right, value)
+  end
+  node
+end
+
 def inorder(node)
   if !node.nil?
     inorder(node.left)
