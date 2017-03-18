@@ -3,9 +3,7 @@ require_relative 'tree.rb'
 def validate_bst?(node)
   if node.left.nil? || node.right.nil?
     return true
-  elsif node.left.value > node.value
-    return false
-  elsif node.right.value <= node.value
+  elsif node.left.value > node.value || node.right.value <= node.value
     return false
   else
     return validate_bst?(node.left) && validate_bst?(node.right)
