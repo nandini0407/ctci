@@ -1,5 +1,5 @@
 require_relative 'chap4_4.2.rb'
-require_relative 'bst.rb'
+require_relative 'tree.rb'
 require_relative 'linked_list.rb'
 
 # O(n^3)

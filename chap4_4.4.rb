@@ -1,4 +1,4 @@
-require_relative 'bst.rb'
+require_relative 'tree.rb'
 
 def balanced?(node)
   left_height = height(node.left)

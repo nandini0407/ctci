@@ -1,4 +1,4 @@
-require_relative 'bst.rb'
+require_relative 'tree.rb'
 
 def make_bst(sorted_arr)
   return nil if sorted_arr.empty? || sorted_arr.nil?
