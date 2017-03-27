@@ -1,10 +1,11 @@
 class Node
-  attr_accessor :value, :left, :right
+  attr_accessor :value, :left, :right, :parent
 
   def initialize(value)
     @value = value
     @left = nil
     @right = nil
+    @parent = nil
   end
 
 end
@@ -19,9 +20,11 @@ def build_binary_tree(arr)
       new_node = Node.new(arr[i])
       if parent.left.nil?
         parent.left = new_node
+        new_node.parent = parent
         bt_arr << new_node
       elsif parent.right.nil?
         parent.right = new_node
+        new_node.parent = parent
         bt_arr << new_node
       end
     end
@@ -44,8 +47,10 @@ def insert_into_bst(node, value)
   end
   if value <= node.value
     node.left = insert_into_bst(node.left, value)
+    node.left.parent = node
   else
     node.right = insert_into_bst(node.right, value)
+    node.right.parent = node
   end
   node
 end
